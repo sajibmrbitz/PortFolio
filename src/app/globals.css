@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────
+   Design Tokens — CSS Custom Properties
+   ─────────────────────────────────────────── */
+
+@theme {
+  /* Font families */
+  --font-serif: "Inter", Arial, sans-serif;
+  --font-sans: "Inter", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  
+  /* Custom colors for the portfolio palette */
+  --color-earth-50: #f7f7f5;
+  --color-earth-100: #eeeeeb;
+  --color-earth-200: #d7d7d2;
+  --color-earth-300: #b7b7b0;
+  --color-earth-400: #777771;
+  --color-earth-500: #555550;
+  --color-earth-600: #333330;
+  --color-earth-700: #202020;
+  --color-earth-800: #111111;
+  --color-earth-900: #080808;
+  --color-earth-950: #050505;
+  
+  --color-accent-green: #e30613;
+  --color-accent-green-dark: #b8000b;
+  --color-accent-green-light: #ff2633;
+  --color-accent-gold: #e30613;
+  --color-accent-gold-light: #ff2633;
+}
+
+/* ───────────────────────────────────────────
+   Light Theme (default)
+   ─────────────────────────────────────────── */
+:root {
+  --site-background-light: #f7f7f5;
+  --bg-primary: var(--site-background-light);
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #eeeeeb;
+  --bg-nav: #f7f7f5;
+  --border-color: #111111;
+  --border-subtle: #b7b7b0;
+  --text-primary: #080808;
+  --text-secondary: #555550;
+  --text-muted: #777771;
+  --accent: var(--color-accent-green);
+  --accent-hover: var(--color-accent-green-dark);
+  --tag-bg: #eeeeeb;
+  --tag-text: #333330;
+  --tag-border: #b7b7b0;
+  --section-divider: #111111;
+}
+
+/* ───────────────────────────────────────────
+   Dark Theme
+   ─────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-primary: #16181d;
+  --bg-secondary: #0e1014;
+  --bg-card: #1d2027;
+  --bg-card-hover: #272b34;
+  --bg-nav: #16181d;
+  --border-color: #e8ebf0;
+  --border-subtle: #414752;
+  --text-primary: #f4f6f8;
+  --text-secondary: #b9c0ca;
+  --text-muted: #858d99;
+  --accent: #ff4d5a;
+  --accent-hover: #ff707a;
+  --tag-bg: #292e37;
+  --tag-text: #e8ebf0;
+  --tag-border: #525a67;
+  --section-divider: #e8ebf0;
+}
+
+/* ───────────────────────────────────────────
+   Base Styles
+   ─────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  transition: background-color 0.15s linear, color 0.15s linear;
+}
+
+/* ───────────────────────────────────────────
+   Typography Utilities
+   ─────────────────────────────────────────── */
+.heading-serif {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+/* ───────────────────────────────────────────
+   Custom Scrollbar
+   ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-earth-600);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-earth-500);
+}
+
+/* ───────────────────────────────────────────
+   Selection Colors
+   ─────────────────────────────────────────── */
+::selection {
+  background-color: var(--accent);
+  color: white;
+}
+
+/* ───────────────────────────────────────────
+   Transitions
+   ─────────────────────────────────────────── */
+.transition-theme {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ───────────────────────────────────────────
+   Link Hover Animation
+   ─────────────────────────────────────────── */
+.link-hover {
+  position: relative;
+}
+
+.link-hover::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.link-hover:hover::after {
+  width: 100%;
+}
+
+.admin-input {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.625rem 0.75rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  outline: none;
+}
+
+/* Swiss grid language: hard edges, visible rules, and no ornamental softness. */
+button,
+a,
+input,
+textarea,
+select,
+article,
+section,
+header,
+footer,
+div {
+  border-radius: 0 !important;
+}
+
+button,
+a {
+  transition: background-color 0.15s linear, color 0.15s linear, border-color 0.15s linear;
+}
+
+button:hover,
+a:hover {
+  box-shadow: none !important;
+}
+
+main {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.admin-input:focus {
+  border-color: var(--accent);
+}
+
+[data-theme="dark"] body {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+[data-theme="dark"] .admin-input {
+  background: #111318;
+  border-color: var(--border-subtle);
+}

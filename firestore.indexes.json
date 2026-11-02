@@ -1,0 +1,15 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "projects",
+      "queryScope": "COLLECTION",
+      "fields": [{ "fieldPath": "order", "order": "ASCENDING" }]
+    },
+    {
+      "collectionGroup": "achievements",
+      "queryScope": "COLLECTION",
+      "fields": [{ "fieldPath": "year", "order": "DESCENDING" }]
+    }
+  ],
+  "fieldOverrides": []
+}
